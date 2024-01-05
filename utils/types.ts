@@ -1,4 +1,4 @@
-//import Stripe from 'stripe';
+import Stripe from "stripe";
 
 export interface Song {
   id: string;
@@ -9,7 +9,7 @@ export interface Song {
   image_path: string;
 }
 
-/* export interface Product {
+export interface Product {
   id: string;
   active?: boolean;
   name?: string;
@@ -69,4 +69,4 @@ export interface Subscription {
   trial_start?: string;
   trial_end?: string;
   prices?: Price;
-} */
+}
