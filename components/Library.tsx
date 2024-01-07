@@ -3,13 +3,26 @@
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Song } from "@/utils/types";
+import useAuthModal from "@/hooks/useAuthModal";
+import { useUser } from "@/hooks/useUser";
+import useUploadModal from "@/hooks/useUploadModal";
 
 interface LibraryProps {
   songs: Song[];
 }
 
 const Library: React.FC<LibraryProps> = ({ songs }) => {
-  const onClick = () => {};
+  const { onOpen } = useAuthModal();
+  const { user } = useUser();
+  const { onOpen: onOpenUpload } = useUploadModal();
+
+  const onClick = () => {
+    if (!user) {
+      onOpen();
+    }
+
+    return onOpenUpload();
+  };
 
   return (
     <div className="flex flex-col">
